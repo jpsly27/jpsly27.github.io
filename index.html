@@ -3,319 +3,394 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Portfolio de Jean Philippe Souli, développeur junior Java Spring Boot et mobile (Flutter).">
-<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Jean Philippe Souli</title>
+<title>Jean Philippe Souli — Développeur Java · Spring Boot &amp; Flutter</title>
+<meta name="description" content="Portfolio de Jean Philippe Souli, développeur junior Java Spring Boot et mobile (Flutter) à Abidjan.">
+<meta name="theme-color" content="#07080d">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jpsly27.github.io/">
+<meta property="og:title" content="Jean Philippe Souli — Développeur Java · Spring Boot & Flutter">
+<meta property="og:description" content="API REST solides avec Spring Boot et applications mobiles Flutter qui les consomment.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var d = document.documentElement, skip = false;
+    d.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') d.dataset.theme = t; } catch (e) {}
+    try { skip = sessionStorage.getItem('booted') === '1'; } catch (e) {}
+    if (skip || matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('skip-loader');
+    else d.classList.add('is-loading');
+    setTimeout(function () { if (!window.__pf) d.classList.remove('js', 'is-loading'); }, 4000);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-  /* Layout: single column, hero split into pitch + a Spring Boot startup log; sections stacked with a left label rail on wide screens. */
-  :root {
-    --bg: #eef1f4;
-    --surface: #ffffff;
-    --ink: #142033;
-    --muted: #55627a;
-    --line: #d5dce5;
-    --leaf: #3f7d2c;
-    --leaf-soft: #e3efdc;
-    --brew: #a8551c;
-    --log-bg: #142033;
-    --log-fg: #d7e0ec;
-    --log-dim: #7f8ca3;
-    --log-ok: #8fd16b;
-    --log-info: #7fb6ff;
-    --todo-bg: #fff3c4;
-    --todo-fg: #6b4e00;
-    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0f1621; --surface: #172131; --ink: #e6ecf4; --muted: #9aa8bd; --line: #26334a;
-      --leaf: #8fd16b; --leaf-soft: #1e3320; --brew: #f0a46a;
-      --log-bg: #0a1018; --log-fg: #d7e0ec; --log-dim: #6f7c93; --log-ok: #8fd16b; --log-info: #7fb6ff;
-      --todo-bg: #3d3210; --todo-fg: #ffd970;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0f1621; --surface: #172131; --ink: #e6ecf4; --muted: #9aa8bd; --line: #26334a;
-    --leaf: #8fd16b; --leaf-soft: #1e3320; --brew: #f0a46a;
-    --log-bg: #0a1018; --log-fg: #d7e0ec; --log-dim: #6f7c93; --log-ok: #8fd16b; --log-info: #7fb6ff;
-    --todo-bg: #3d3210; --todo-fg: #ffd970;
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 0 64px; }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--leaf); outline-offset: 3px; border-radius: 4px; }
-
-  .todo { background: var(--todo-bg); color: var(--todo-fg); padding: 0 .3em; border-radius: 3px; font-weight: 500; }
-
-  /* Top bar */
-  .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
-  .mark { font-family: var(--mono); font-size: 13px; color: var(--muted); }
-  .mark b { color: var(--leaf); font-weight: 600; }
-  .nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
-  .nav a { text-decoration: none; color: var(--muted); }
-  .nav a:hover { color: var(--ink); }
-
-  /* Hero */
-  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding-block: 40px 72px; }
-  .hero > * { min-width: 0; }
-  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--leaf); background: var(--leaf-soft); padding: 4px 12px; border-radius: 999px; }
-  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--leaf); }
-  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 6.4vw, 4.6rem); line-height: .98; letter-spacing: -.025em; margin: 20px 0 18px; text-wrap: balance; }
-  h1 .role { display: block; font-weight: 500; font-size: .42em; letter-spacing: -.01em; color: var(--muted); margin-top: 14px; line-height: 1.25; }
-  h1 .role em { font-style: normal; color: var(--leaf); }
-  h1 .role i { font-style: normal; color: var(--brew); }
-  .pitch { max-width: 52ch; color: var(--muted); font-size: 1.06rem; margin: 0 0 28px; }
-  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--body); padding: 11px 18px; border-radius: 8px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
-  .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-  .btn:hover { transform: translateY(-1px); }
-
-  /* Startup log */
-  .log { background: var(--log-bg); color: var(--log-fg); border-radius: 12px; font-family: var(--mono); font-size: 12.5px; line-height: 1.75; overflow: hidden; box-shadow: 0 24px 48px -24px rgba(20, 32, 51, .45); }
-  .log-head { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.07); align-items: center; }
-  .log-head span { width: 10px; height: 10px; border-radius: 50%; background: #3a4a63; }
-  .log-head p { margin: 0 0 0 10px; color: var(--log-dim); font-size: 12px; }
-  .log pre { margin: 0; padding: 16px 18px 20px; overflow-x: auto; font: inherit; }
-  .log .d { color: var(--log-dim); }
-  .log .i { color: var(--log-info); }
-  .log .ok { color: var(--log-ok); font-weight: 600; }
-  .log .line { display: block; opacity: 1; }
-  @media (prefers-reduced-motion: no-preference) {
-    .log .line { animation: in .35s ease both; }
-    .log .line:nth-child(2) { animation-delay: .15s } .log .line:nth-child(3) { animation-delay: .3s }
-    .log .line:nth-child(4) { animation-delay: .45s } .log .line:nth-child(5) { animation-delay: .6s }
-    .log .line:nth-child(6) { animation-delay: .75s } .log .line:nth-child(7) { animation-delay: .9s }
-    .log .line:nth-child(8) { animation-delay: 1.05s }
-    @keyframes in { from { opacity: .15; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
-  }
-
-  /* Sections */
-  section { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding-block: 56px; border-top: 1px solid var(--line); }
-  section > * { min-width: 0; }
-  .label { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding-top: 8px; }
-  .label b { display: block; color: var(--leaf); font-weight: 600; margin-bottom: 4px; }
-  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; letter-spacing: -.015em; margin: 0 0 24px; text-wrap: balance; }
-
-  /* Skills */
-  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
-  .stack h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin: 0 0 10px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { font-family: var(--mono); font-size: 13px; padding: 5px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); }
-  .chip.core { border-color: var(--leaf); color: var(--leaf); }
-
-  /* Projects */
-  .projects { display: grid; gap: 20px; }
-  .project { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 12px; }
-  .project-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .project h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 700; margin: 0; }
-  .kind { font-family: var(--mono); font-size: 12px; color: var(--brew); }
-  .project p { margin: 0; color: var(--muted); max-width: 68ch; }
-  .project ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
-  .tech { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tech span { font-family: var(--mono); font-size: 12px; color: var(--ink); background: var(--bg); padding: 3px 8px; border-radius: 4px; }
-  .links { display: flex; gap: 16px; font-size: 14px; font-weight: 500; flex-wrap: wrap; }
-  .links a { color: var(--leaf); text-underline-offset: 3px; }
-
-  /* Timeline */
-  .timeline { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
-  .timeline li { display: grid; grid-template-columns: 130px 1fr; gap: 20px; }
-  .timeline li > * { min-width: 0; }
-  .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
-  .timeline h3 { margin: 0 0 4px; font-size: 1.05rem; }
-  .timeline p { margin: 0; color: var(--muted); }
-
-  /* Hackathon */
-  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .values h3 { font-size: 1.05rem; margin: 0 0 6px; }
-  .values p { margin: 0; color: var(--muted); font-size: 15px; }
-
-  /* Contact */
-  .contact-rows { display: grid; gap: 12px; }
-  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
-  .row .k { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); width: 84px; }
-  .row .v { flex: 1; min-width: 0; overflow-wrap: anywhere; font-weight: 500; }
-  .copy { font: 600 13px var(--body); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
-
-  footer { padding-top: 40px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
-
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 36px; padding-block: 24px 56px; }
-    section { grid-template-columns: 1fr; gap: 8px; padding-block: 44px; }
-    .values { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 560px) {
-    .stack { grid-template-columns: 1fr; }
-    .timeline li { grid-template-columns: 1fr; gap: 2px; }
-    .nav { display: none; }
-    .log { font-size: 11.5px; }
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/main.js" defer></script>
 </head>
 <body>
 
+<!-- Écran de démarrage -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <pre class="loader-log" id="loaderLog"></pre>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+    <div class="loader-meta"><span>mvn spring-boot:run</span><span id="loaderPct">0%</span></div>
+  </div>
+</div>
 
-<div class="wrap">
-  <header class="top">
-    <div class="mark"><b>jp.souli</b> / portfolio</div>
-    <nav class="nav" aria-label="Sections">
-      <a href="#competences">Compétences</a>
-      <a href="#projets">Projets</a>
-      <a href="#parcours">Parcours</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div></div>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<div class="cursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-ring"><span class="ring"></span><span class="cursor-label"></span></div></div>
+<canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <div class="hero">
-    <div>
-      <span class="status">Disponible pour hackathons et stages</span>
-      <h1>Jean Philippe Souli
-        <span class="role">Développeur junior <em>Java · Spring Boot</em> &amp; <i>mobile</i></span>
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Retour en haut">
+    <span class="logo-mark">jp</span><span class="logo-text">souli<span class="caret">_</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <span class="nav-pill" aria-hidden="true"></span>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">Projets</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#equipe">En équipe</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="Changer de thème">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    </button>
+    <button class="icon-btn burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" inert>
+  <nav aria-label="Menu mobile">
+    <a href="#competences"><small>01</small>Compétences</a>
+    <a href="#projets"><small>02</small>Projets</a>
+    <a href="#parcours"><small>03</small>Parcours</a>
+    <a href="#equipe"><small>04</small>En équipe</a>
+    <a href="#contact"><small>05</small>Contact</a>
+  </nav>
+  <p class="mm-foot">jeanphilippesouli@gmail.com</p>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="net" aria-hidden="true"></canvas>
+  <div class="container hero-grid" id="heroGrid">
+    <div class="hero-text">
+      <p class="status" data-intro style="--d:0"><span class="pulse"></span>Disponible pour hackathons et stages</p>
+      <h1 class="hero-title" aria-label="Jean Philippe Souli">
+        <span class="t-line" aria-hidden="true"><span class="split">Jean</span> <span class="split">Philippe</span></span>
+        <span class="t-line" aria-hidden="true"><span class="t-word grad">Souli</span><span class="t-dot">.</span></span>
       </h1>
-      <p class="pitch">Étudiant en développement, je construis des API REST solides avec Spring Boot et les applications mobiles qui les consomment. J'aime livrer vite une version qui marche, puis l'améliorer en équipe.</p>
-      <div class="ctas">
-        <a class="btn primary" href="#projets">Voir mes projets</a>
-        <a class="btn" href="https://github.com/jpsly27" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="#contact">Me contacter</a>
+      <p class="role" data-intro style="--d:2">
+        <span class="sr-only">Je construis des API REST solides avec Spring Boot et des applications mobiles en Flutter.</span>
+        <span aria-hidden="true">Je construis des <span class="rotator" id="rotator">API REST solides</span><span class="type-caret"></span></span>
+      </p>
+      <p class="pitch" data-intro style="--d:3">Étudiant en développement, je construis des API REST solides avec Spring Boot et les applications mobiles qui les consomment. J'aime livrer vite une version qui marche, puis l'améliorer en équipe.</p>
+      <div class="ctas" data-intro style="--d:4">
+        <a class="btn btn-primary magnetic" href="#projets"><span>Voir mes projets</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost magnetic" href="https://github.com/jpsly27" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg><span>GitHub</span></a>
+        <a class="btn btn-ghost magnetic" href="#contact"><span>Me contacter</span></a>
       </div>
     </div>
 
-    <div class="log" aria-label="Journal de démarrage Spring Boot stylisé">
-      <div class="log-head"><span></span><span></span><span></span><p>souli-portfolio — bootRun</p></div>
-      <pre><span class="line"><span class="d">  .   ____          _</span></span><span class="line"><span class="d"> :: Spring Boot ::</span>        (v3.3)</span><span class="line"><span class="i">INFO</span>  Starting <b>JeanPhilippeSouliApplication</b></span><span class="line"><span class="i">INFO</span>  Loaded skills: java, spring-boot, rest-api</span><span class="line"><span class="i">INFO</span>  Mobile module ready: flutter, dart</span><span class="line"><span class="i">INFO</span>  Mapped endpoints: /projets /contact</span><span class="line"><span class="i">INFO</span>  Tomcat started on port 8080</span><span class="line"><span class="ok">Started in 2.41 s — prêt pour le hackathon</span></span></pre>
+    <div class="hero-side" data-intro style="--d:3">
+      <div class="term" id="term">
+        <div class="term-head">
+          <span class="term-dots"><i></i><i></i><i></i></span>
+          <p>visiteur@jp — bootRun</p>
+          <span class="term-live"><span class="live-dot"></span>live</span>
+        </div>
+        <div class="term-body" id="termBody">
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <form class="term-line" id="termForm" autocomplete="off">
+            <label for="termInput" class="prompt">visiteur@jp:~$</label>
+            <input id="termInput" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send">
+          </form>
+        </div>
+        <div class="term-chips" id="termChips" aria-label="Commandes rapides">
+          <button type="button" data-cmd="help">help</button>
+          <button type="button" data-cmd="whoami">whoami</button>
+          <button type="button" data-cmd="skills">skills</button>
+          <button type="button" data-cmd="projets">projets</button>
+          <button type="button" data-cmd="hire-me">hire-me</button>
+        </div>
+      </div>
+      <span class="float-badge fb1"><span class="live-dot"></span>200 OK</span>
+      <span class="float-badge fb2">⚡ hot reload</span>
+      <span class="float-badge fb3">@RestController</span>
     </div>
   </div>
+  <a class="scroll-hint" href="#competences" aria-label="Défiler vers les compétences"><span class="mouse"><span></span></span>scroll</a>
+</section>
 
-  <section id="competences">
-    <div class="label"><b>01</b>Compétences</div>
-    <div>
-      <h2>Du back-end à l'écran du téléphone</h2>
-      <div class="stack">
-        <div>
-          <h3>Back-end</h3>
-          <div class="chips">
-            <span class="chip core">Java 17+</span><span class="chip core">Spring Boot</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">API REST</span><span class="chip">Maven</span>
+<!-- BANDEAUX -->
+<div class="marquees" aria-hidden="true">
+  <div class="marquee m1"><div class="marquee-track">
+    <span>Java 17+</span><i class="star"></i><span>Spring Boot</span><i class="star"></i><span>Flutter</span><i class="star"></i><span>Dart</span><i class="star"></i><span>API REST</span><i class="star"></i><span>PostgreSQL</span><i class="star"></i><span>Spring Security</span><i class="star"></i><span>MySQL</span><i class="star"></i><span>Docker</span><i class="star"></i><span>Git</span><i class="star"></i>
+  </div></div>
+  <div class="marquee m2"><div class="marquee-track">
+    <span>Prêt pour le hackathon</span><i class="star"></i><span class="hl">Code propre</span><i class="star"></i><span>Livrer vite</span><i class="star"></i><span class="hl">Apprendre toujours</span><i class="star"></i><span>Travailler en équipe</span><i class="star"></i><span class="hl">Abidjan</span><i class="star"></i>
+  </div></div>
+</div>
+<!-- 01 COMPÉTENCES -->
+<section class="section" id="competences">
+  <div class="container">
+    <header class="sec-head" data-reveal>
+      <p class="sec-kicker"><span>01</span>Compétences</p>
+      <h2 class="sec-title" data-words>Du back-end à l'écran du téléphone</h2>
+      <p class="sec-sub">Une API solide d'un côté, l'application qui la consomme de l'autre.</p>
+    </header>
+
+    <div class="bento" data-stagger>
+      <article class="card card-back" data-reveal data-spotlight>
+        <div class="card-head"><span class="card-ico">{ }</span><h3>Back-end</h3><span class="card-tag">cœur de métier</span></div>
+        <div class="chips"><span class="chip core">Java 17+</span><span class="chip core">Spring Boot</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">API REST</span><span class="chip">Maven</span></div>
+        <div class="api-demo" aria-hidden="true">
+<pre class="code"><code><span class="an">@RestController</span>
+<span class="an">@RequestMapping</span>(<span class="st">"/api/projets"</span>)
+<span class="kw">public class</span> <span class="ty">ProjetController</span> {
+
+  <span class="an">@GetMapping</span>
+  <span class="kw">public</span> <span class="ty">List</span>&lt;<span class="ty">Projet</span>&gt; <span class="fn">lister</span>() {
+    <span class="kw">return</span> service.<span class="fn">findAll</span>();
+  }
+}</code></pre>
+          <div class="req-log" id="reqLog"></div>
+        </div>
+      </article>
+
+      <article class="card card-mobile" data-reveal data-spotlight>
+        <div class="card-head"><span class="card-ico">▢</span><h3>Mobile</h3></div>
+        <div class="mini-phone" aria-hidden="true">
+          <div class="mp-screen">
+            <div class="mp-status"><span>9:41</span><span class="mp-icons"><i></i><i></i><i></i></span></div>
+            <div class="mp-bar"><b>Mes tâches</b><span class="mp-avatar"></span></div>
+            <div class="mp-list">
+              <div class="mp-item"><span class="mp-check"></span><span class="mp-lines"><i></i><i></i></span></div>
+              <div class="mp-item"><span class="mp-check"></span><span class="mp-lines"><i></i><i></i></span></div>
+              <div class="mp-item"><span class="mp-check"></span><span class="mp-lines"><i></i><i></i></span></div>
+              <div class="mp-item"><span class="mp-check"></span><span class="mp-lines"><i></i><i></i></span></div>
+            </div>
+            <div class="mp-fab">+</div>
+            <div class="mp-toast">⚡ Hot reload</div>
           </div>
         </div>
-        <div>
-          <h3>Mobile</h3>
-          <div class="chips">
-            <span class="chip core">Flutter</span><span class="chip core">Dart</span><span class="chip">Android</span><span class="chip">Consommation d'API</span>
+        <div class="chips"><span class="chip core">Flutter</span><span class="chip core">Dart</span><span class="chip">Android</span><span class="chip">Consommation d'API</span></div>
+      </article>
+
+      <article class="card card-data" data-reveal data-spotlight>
+        <div class="card-head"><span class="card-ico">≡</span><h3>Données</h3></div>
+        <div class="db" aria-hidden="true">
+          <div class="db-q"><span class="kw">SELECT</span> nom, type <span class="kw">FROM</span> projets;</div>
+          <div class="db-table">
+            <div class="db-row db-th"><span>id</span><span>nom</span><span>type</span></div>
+            <div class="db-row"><span>1</span><span>PharmaFind</span><span>mobile</span></div>
+            <div class="db-row"><span>2</span><span>Despo Couture</span><span>gestion</span></div>
+            <div class="db-row"><span>3</span><span>Portfolio</span><span>web</span></div>
           </div>
+          <div class="db-foot">3 rows · 4 ms</div>
         </div>
-        <div>
-          <h3>Données</h3>
-          <div class="chips">
-            <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span>
-          </div>
-        </div>
-        <div>
-          <h3>Outils</h3>
-          <div class="chips">
-            <span class="chip">Git &amp; GitHub</span><span class="chip">IntelliJ IDEA</span><span class="chip">Android Studio</span><span class="chip">Postman</span><span class="chip">Docker (bases)</span>
-          </div>
-        </div>
-      </div>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span></div>
+      </article>
+
+      <article class="card card-tools" data-reveal data-spotlight>
+        <div class="card-head"><span class="card-ico">⌥</span><h3>Outils</h3></div>
+        <svg class="git" viewBox="0 0 300 92" aria-hidden="true">
+          <path class="g-main" d="M10 66 H290"/>
+          <path class="g-branch" d="M62 66 C84 66 84 26 108 26 H196 C220 26 220 66 244 66"/>
+          <circle class="g-c c1" cx="30" cy="66" r="6"/><circle class="g-c c2" cx="62" cy="66" r="6"/>
+          <circle class="g-c b c3" cx="122" cy="26" r="6"/><circle class="g-c b c4" cx="158" cy="26" r="6"/><circle class="g-c b c5" cx="190" cy="26" r="6"/>
+          <circle class="g-c c6" cx="244" cy="66" r="7"/><circle class="g-c c7" cx="278" cy="66" r="6"/>
+          <text x="10" y="88">main</text><text x="112" y="12">feature/api</text>
+        </svg>
+        <div class="chips"><span class="chip">Git &amp; GitHub</span><span class="chip">IntelliJ IDEA</span><span class="chip">Android Studio</span><span class="chip">Postman</span><span class="chip">Docker (bases)</span></div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="projets">
-    <div class="label"><b>02</b>Projets</div>
-    <div>
-      <h2>Ce que j'ai construit</h2>
-      <div class="projects">
-        <article class="project">
-          <div class="project-top"><h3>PharmaFind</h3><span class="kind">Application mobile · Flutter</span></div>
-          <p>Une application qui aide les malades et leurs familles à trouver et se procurer leurs médicaments, sans faire le tour des pharmacies.</p>
-          <ul>
+<!-- 02 PROJETS -->
+<section class="section" id="projets">
+  <div class="container">
+    <header class="sec-head" data-reveal>
+      <p class="sec-kicker"><span>02</span>Projets</p>
+      <h2 class="sec-title" data-words>Ce que j'ai construit</h2>
+      <p class="sec-sub">Des applications pensées pour de vrais problèmes, du quotidien des patients à l'atelier de couture.</p>
+    </header>
+
+    <div class="projects">
+      <article class="project" data-num="01">
+        <div class="project-info" data-reveal>
+          <p class="project-kind"><span class="pill">Application mobile</span><span class="pill">Flutter</span></p>
+          <h3 class="project-title">PharmaFind</h3>
+          <p class="project-desc">Une application qui aide les malades et leurs familles à trouver et se procurer leurs médicaments, sans faire le tour des pharmacies.</p>
+          <ul class="project-points">
             <li>Digitalise l'approvisionnement en médicaments pour les patients et leurs proches</li>
             <li>Application multiplateforme développée avec Flutter</li>
           </ul>
           <div class="tech"><span>Flutter</span><span>Dart</span><span>Mobile</span></div>
-          <div class="links"><a href="https://github.com/jpsly27/pharmafind" target="_blank" rel="noopener">Code source sur GitHub →</a></div>
-        </article>
+          <a class="link-arrow" href="https://github.com/jpsly27/Pharmafind" target="_blank" rel="noopener" data-cursor="Code">Code source sur GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+        <div class="project-visual pv-pharma" data-reveal data-tilt aria-hidden="true">
+          <div class="map-card">
+            <svg viewBox="0 0 220 160"><path d="M0 40 Q60 30 110 60 T220 50M20 160 Q50 100 110 90 T200 0M0 120 H220M150 160 Q140 110 170 80"/></svg>
+            <span class="pin p1"></span><span class="pin p2"></span><span class="pin p3 off"></span><span class="me"></span>
+          </div>
+          <div class="phone">
+            <div class="phone-screen pf">
+              <div class="pf-top"><span class="pf-logo">✚</span><b>PharmaFind</b></div>
+              <div class="pf-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span id="pfTyped">Paracétamol 500 mg</span><span class="type-caret sm"></span></div>
+              <p class="pf-label">Pharmacies à proximité</p>
+              <div class="pf-results">
+                <div class="pf-item"><span class="pf-ic">✚</span><div><b>Plateau</b><small>Pharmacie · 1,2 km</small></div><em class="ok">Disponible</em></div>
+                <div class="pf-item"><span class="pf-ic">✚</span><div><b>Cocody</b><small>Pharmacie · 2,8 km</small></div><em class="ok">Disponible</em></div>
+                <div class="pf-item"><span class="pf-ic">✚</span><div><b>Marcory</b><small>Pharmacie · 4,1 km</small></div><em class="ko">Rupture</em></div>
+              </div>
+              <div class="pf-cta">Réserver</div>
+            </div>
+          </div>
+        </div>
+      </article>
 
-        <article class="project">
-          <div class="project-top"><h3>Despo Couture</h3><span class="kind">Projet de cours · Pigier Côte d'Ivoire</span></div>
-          <p>Une application qui digitalise la gestion d'un atelier de couture, de la prise de mesures jusqu'au rendez-vous client.</p>
-          <ul>
+      <article class="project reverse" data-num="02">
+        <div class="project-info" data-reveal>
+          <p class="project-kind"><span class="pill">Projet de cours</span><span class="pill">Pigier Côte d'Ivoire</span></p>
+          <h3 class="project-title">Despo Couture</h3>
+          <p class="project-desc">Une application qui digitalise la gestion d'un atelier de couture, de la prise de mesures jusqu'au rendez-vous client.</p>
+          <ul class="project-points">
             <li>Enregistrement des mesures de chaque client</li>
             <li>Gestion des rendez-vous de l'atelier</li>
             <li>Projet évalué à <strong>15/20</strong></li>
           </ul>
           <div class="tech"><span>Gestion d'atelier</span><span>Projet académique</span></div>
-        </article>
-      </div>
+        </div>
+        <div class="project-visual pv-couture" data-reveal data-tilt aria-hidden="true">
+          <div class="dc-card dc-measures">
+            <div class="dc-head"><span class="dc-avatar">C</span><div><b>Client #024</b><small>Fiche mesures</small></div></div>
+            <div class="dc-row"><span>Tour de poitrine</span><b><i data-count="92">0</i> cm</b><span class="dc-bar" style="--w:.82"></span></div>
+            <div class="dc-row"><span>Tour de taille</span><b><i data-count="76">0</i> cm</b><span class="dc-bar" style="--w:.64"></span></div>
+            <div class="dc-row"><span>Tour de hanches</span><b><i data-count="98">0</i> cm</b><span class="dc-bar" style="--w:.9"></span></div>
+            <div class="dc-row"><span>Longueur manche</span><b><i data-count="61">0</i> cm</b><span class="dc-bar" style="--w:.5"></span></div>
+          </div>
+          <div class="dc-tape"><span></span></div>
+          <div class="dc-card dc-rdv">
+            <small>Prochain rendez-vous</small>
+            <b>Jeudi · 10:00</b>
+            <span class="dc-tag">Essayage</span>
+          </div>
+          <div class="dc-stamp"><b>15</b><small>/20</small></div>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="parcours">
-    <div class="label"><b>03</b>Parcours</div>
-    <div>
-      <h2>Formation</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">2026</div>
-          <div><h3>Licence Réseaux et Génie Logiciel</h3><p>Pigier Côte d'Ivoire</p></div>
+<!-- 03 PARCOURS -->
+<section class="section" id="parcours">
+  <div class="container">
+    <header class="sec-head" data-reveal>
+      <p class="sec-kicker"><span>03</span>Parcours</p>
+      <h2 class="sec-title" data-words>Formation</h2>
+    </header>
+    <div class="timeline" id="timeline">
+      <div class="tl-line" aria-hidden="true"><span id="tlFill"></span></div>
+      <ol>
+        <li class="tl-item" data-reveal>
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-card card" data-spotlight>
+            <span class="tl-year">2026</span>
+            <h3>Licence Réseaux et Génie Logiciel</h3>
+            <p>Pigier Côte d'Ivoire</p>
+          </div>
         </li>
-        <li>
-          <div class="when">2025</div>
-          <div><h3>BTS IDA (Informatique Développeur d'Application)</h3><p>Pigier Côte d'Ivoire</p></div>
+        <li class="tl-item" data-reveal>
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-card card" data-spotlight>
+            <span class="tl-year">2025</span>
+            <h3>BTS IDA <small>(Informatique Développeur d'Application)</small></h3>
+            <p>Pigier Côte d'Ivoire</p>
+          </div>
         </li>
       </ol>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="hackathon">
-    <div class="label"><b>04</b>En équipe</div>
-    <div>
-      <h2>Ce que j'apporte à une équipe de hackathon</h2>
-      <div class="values">
-        <div><h3>Un back-end en quelques heures</h3><p>Je mets en place rapidement une API Spring Boot propre, avec base de données, pour que l'équipe ait des données réelles dès le début.</p></div>
-        <div><h3>Une démo sur téléphone</h3><p>Je peux transformer l'idée en application mobile qu'on peut montrer au jury, branchée sur notre API.</p></div>
-        <div><h3>L'envie d'apprendre</h3><p>Junior et curieux, je prends les tâches qu'il faut, je pose des questions et je documente ce que je fais.</p></div>
-      </div>
+<!-- 04 EN ÉQUIPE -->
+<section class="section" id="equipe">
+  <div class="container">
+    <header class="sec-head" data-reveal>
+      <p class="sec-kicker"><span>04</span>En équipe</p>
+      <h2 class="sec-title" data-words>Ce que j'apporte à une équipe de hackathon</h2>
+    </header>
+    <div class="hack-clock" data-reveal aria-hidden="true">
+      <span class="live-dot"></span>
+      <span>Mode hackathon</span>
+      <b id="hackTimer">48:00:00</b>
+      <span class="hc-muted">restantes</span>
+      <span class="hc-bar"><i id="hackBar"></i></span>
     </div>
-  </section>
-
-  <section id="contact">
-    <div class="label"><b>05</b>Contact</div>
-    <div>
-      <h2>Me contacter</h2>
-      <div class="contact-rows">
-        <div class="row"><span class="k">E-mail</span><span class="v" id="email">jeanphilippesouli@gmail.com</span><button class="copy" data-copy="email" type="button">Copier</button></div>
-        <div class="row"><span class="k">Téléphone</span><span class="v" id="phone">+225 01 52 78 11 21</span><button class="copy" data-copy="phone" type="button">Copier</button></div>
-        <div class="row"><span class="k">GitHub</span><span class="v"><a href="https://github.com/jpsly27" target="_blank" rel="noopener">github.com/jpsly27</a></span></div>
-      </div>
+    <div class="values" data-stagger>
+      <article class="card value" data-reveal data-spotlight>
+        <span class="v-num">01</span>
+        <svg class="v-ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="12" rx="3"/><rect x="8" y="28" width="32" height="12" rx="3"/><circle class="blink" cx="15" cy="14" r="1.8"/><circle class="blink d2" cx="15" cy="34" r="1.8"/><path d="M24 14h10M24 34h10"/></svg>
+        <h3>Un back-end en quelques heures</h3>
+        <p>Je mets en place rapidement une API Spring Boot propre, avec base de données, pour que l'équipe ait des données réelles dès le début.</p>
+      </article>
+      <article class="card value" data-reveal data-spotlight>
+        <span class="v-num">02</span>
+        <svg class="v-ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M21 9h6"/><path class="wave" d="M19 26l3 3 7-7"/></svg>
+        <h3>Une démo sur téléphone</h3>
+        <p>Je peux transformer l'idée en application mobile qu'on peut montrer au jury, branchée sur notre API.</p>
+      </article>
+      <article class="card value" data-reveal data-spotlight>
+        <span class="v-num">03</span>
+        <svg class="v-ico" viewBox="0 0 48 48" aria-hidden="true"><path class="spark" d="M24 6l3.5 10.5L38 20l-10.5 3.5L24 34l-3.5-10.5L10 20l10.5-3.5z"/><path class="spark s2" d="M38 32l1.5 4.5L44 38l-4.5 1.5L38 44l-1.5-4.5L32 38l4.5-1.5z"/></svg>
+        <h3>L'envie d'apprendre</h3>
+        <p>Junior et curieux, je prends les tâches qu'il faut, je pose des questions et je documente ce que je fais.</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>© 2026 Jean Philippe Souli · Fait avec soin, comme une bonne API.</footer>
-</div>
+<!-- 05 CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <p class="sec-kicker" data-reveal><span>05</span>Contact</p>
+    <h2 class="contact-title" data-words>Construisons quelque chose <span class="grad">ensemble.</span></h2>
+    <p class="contact-sub" data-reveal>Un hackathon, un stage ou une idée d'application ? Écris-moi.</p>
+    <div class="contact-cta" data-reveal>
+      <a class="btn btn-primary btn-xl magnetic" href="mailto:jeanphilippesouli@gmail.com" data-cursor="Écrire"><span>Écrire un e-mail</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="contact-rows" data-stagger>
+      <div class="row" data-reveal><span class="k">E-mail</span><span class="v" id="email">jeanphilippesouli@gmail.com</span><button class="copy" data-copy="email" type="button">Copier</button></div>
+      <div class="row" data-reveal><span class="k">Téléphone</span><span class="v" id="phone">+225 01 52 78 11 21</span><button class="copy" data-copy="phone" type="button">Copier</button></div>
+      <div class="row" data-reveal><span class="k">GitHub</span><span class="v"><a href="https://github.com/jpsly27" target="_blank" rel="noopener">github.com/jpsly27</a></span><a class="copy" href="https://github.com/jpsly27" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">Ouvrir ↗</a></div>
+    </div>
+    <p class="clock" data-reveal><span class="live-dot"></span>Abidjan · <b id="clock">--:--:--</b> GMT <span class="clock-mood" id="clockMood"></span></p>
+  </div>
+</section>
 
-<script>
-  document.querySelectorAll('[data-copy]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var el = document.getElementById(btn.dataset.copy);
-      var text = el.textContent.trim();
-      function done(label) { btn.textContent = label; setTimeout(function () { btn.textContent = 'Copier'; }, 1600); }
-      function fallback() {
-        var r = document.createRange(); r.selectNodeContents(el);
-        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); done('Sélectionné');
-      }
-      try { navigator.clipboard.writeText(text).then(function () { done('Copié'); }, fallback); }
-      catch (e) { fallback(); }
-    });
-  });
-</script>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer-big" aria-hidden="true">souli<span>.</span></p>
+    <div class="footer-row">
+      <p>© <span id="year">2026</span> Jean Philippe Souli · Fait avec soin, comme une bonne API.</p>
+      <p class="hint">Psst… essaie le terminal, ou <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd></p>
+      <a class="to-top magnetic" href="#top" aria-label="Retour en haut"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
