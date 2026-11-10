@@ -220,14 +220,6 @@ html.cursor-on .cursor-dot, html.cursor-on .cursor-ring { opacity: 1; }
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; padding: 120px 0 90px; overflow: hidden; }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent); mask-image: linear-gradient(to bottom, #000 60%, transparent); }
 .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: clamp(32px, 5vw, 72px); align-items: center; will-change: transform; }
-.status {
-  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 7px 14px 7px 12px;
-  font-size: 13px; font-weight: 500; border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-}
-.status .pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-.status .pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--green); animation: ripple 1.6s ease-out infinite; }
-@keyframes ripple { to { transform: scale(3.2); opacity: 0; } }
 
 .hero-title { margin: 0 0 22px; font: 800 clamp(2.8rem, 12vw, 6.4rem)/.92 var(--display); letter-spacing: -.045em; }
 .t-line { display: block; overflow: hidden; padding: .04em .08em .1em 0; margin-bottom: -.06em; }
@@ -533,11 +525,6 @@ html.js [data-reveal].in { opacity: 1; transform: none; }
 .tl-card p { margin: 0; color: var(--muted); font-family: var(--mono); font-size: 13px; }
 
 /* 11. En équipe ------------------------------------------------------------ */
-.hack-clock { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 26px; padding: 14px 20px; border-radius: 16px; border: 1px dashed var(--line-2); font: 500 13px var(--mono); }
-.hack-clock b { font-size: 1.3rem; color: var(--orange); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
-.hc-muted { color: var(--muted); }
-.hc-bar { flex: 1 1 140px; height: 6px; border-radius: 9px; background: var(--surface-2); overflow: hidden; }
-.hc-bar i { display: block; height: 100%; width: 100%; background: var(--grad); transform-origin: left; transition: transform 1s linear; }
 .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .value { display: grid; align-content: start; gap: 12px; min-height: 280px; transition: transform .6s var(--ease); }
 .value:hover { transform: translateY(-8px); }

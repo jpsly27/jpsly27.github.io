@@ -116,7 +116,6 @@
       ['API REST solides', '--green'],
       ['apps mobiles en Flutter', '--cyan'],
       ['back-ends Spring Boot', '--green'],
-      ['démos qui marchent', '--orange'],
       ['idées qui deviennent des apps', '--cyan']
     ];
     let i = 0;
@@ -169,7 +168,7 @@
       whoami: () => [
         '<span class="c-w">Jean Philippe Souli</span>',
         'Développeur junior <span class="c-g">Java · Spring Boot</span> &amp; <span class="c-o">mobile (Flutter)</span>',
-        '<span class="c-d">📍 Abidjan, Côte d\'Ivoire · disponible pour hackathons et stages</span>'
+        '<span class="c-d">📍 Abidjan, Côte d\'Ivoire</span>'
       ],
       skills: () => [
         '<span class="c-g">back-end </span>  Java 17+, Spring Boot, Spring Data JPA, Spring Security, API REST, Maven',
@@ -649,18 +648,13 @@
     }, { threshold: 0.5 });
   });
 
-  /* ---------- Chrono hackathon & horloge d'Abidjan ---------- */
+  /* ---------- Horloge d'Abidjan ---------- */
   (() => {
-    const timer = $('#hackTimer'), bar = $('#hackBar'), clock = $('#clock'), mood = $('#clockMood');
-    const TOTAL = 48 * 3600, t0 = Date.now();
-    const pad = (n) => String(n).padStart(2, '0');
+    const clock = $('#clock'), mood = $('#clockMood');
     const fmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Africa/Abidjan', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
     const hourFmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Africa/Abidjan', hour: 'numeric', hour12: false });
     const moods = [[6, 'sûrement en train de dormir 😴'], [9, 'café + revue de code ☕'], [12, 'en plein dans le code'], [14, 'pause déj\' 🍛'], [19, 'en train de livrer des features'], [24, 'side project ou hackathon 🌙']];
     const tick = () => {
-      const left = Math.max(0, TOTAL - Math.floor((Date.now() - t0) / 1000));
-      if (timer) timer.textContent = `${pad(Math.floor(left / 3600))}:${pad(Math.floor((left % 3600) / 60))}:${pad(left % 60)}`;
-      if (bar) bar.style.transform = `scaleX(${left / TOTAL})`;
       if (clock) clock.textContent = fmt.format(new Date());
       if (mood) {
         const h = parseInt(hourFmt.format(new Date()), 10) % 24;
