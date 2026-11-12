@@ -183,7 +183,8 @@
       ],
       parcours: () => [
         '<span class="c-y">2026</span>  Licence Réseaux et Génie Logiciel <span class="c-d">· Pigier Côte d\'Ivoire</span>',
-        '<span class="c-y">2025</span>  BTS IDA <span class="c-d">· Pigier Côte d\'Ivoire</span>'
+        '<span class="c-y">2025</span>  BTS IDA <span class="c-d">· Pigier Côte d\'Ivoire</span>',
+        '<span class="c-y">2022</span>  Baccalauréat série D <span class="c-d">· Lycée Classique d\'Abidjan</span>'
       ],
       contact: () => [
         'e-mail    <a href="mailto:jeanphilippesouli@gmail.com">jeanphilippesouli@gmail.com</a>',
